@@ -651,8 +651,8 @@
                     </h5>
                   </div>
                   <div>
-                      <form action="" method="post" role="form" class="contactForm" name="contact_form" id="contact_form">
-                      <div id="sendmessage">Your message has been sent. Thank you!</div>
+                      <form role="form" class="contactForm" name="google-sheet">
+                      <div id="sendmessage"></div>
                       <div id="errormessage"></div>
                       <div class="row">
                         <div class="col-md-12 mb-3">
@@ -754,6 +754,18 @@
 
   <!-- Template Main Javascript File -->
   <script src="js/main.js"></script>
+
+  <script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzYLPe_O80c4ED2B_rBQE7ptnOwTt8KW2OGeXtVG98sde19UkHSixvDga96t8_Lg1_7/exec'
+  const form = document.forms['google-sheet']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => $("#sendmessage").html("<div class='alert alert-success'>Your message has been sent. Thank you!</div>"))
+      .catch(error => $("#errormessage").html("<div class='alert alert-danger'>Sorry! I am unable to send your message.</div>"))
+  })
+</script>
 
 </body>
 </html>
