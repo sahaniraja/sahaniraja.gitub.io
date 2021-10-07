@@ -739,7 +739,6 @@
 
   <!-- JavaScript Libraries -->
 
-  <script src="https://smtpjs.com/v3/smtp.js"></script>
   <script src="lib/jquery/jquery.min.js"></script>
   <script src="lib/jquery/jquery-migrate.min.js"></script>
   <script src="lib/popper/popper.min.js"></script>
@@ -755,32 +754,6 @@
 
   <!-- Template Main Javascript File -->
   <script src="js/main.js"></script>
-
-  <script>
-      /*--/ Send Email /--*/
-
-      const form = document.querySelector('.contact_form');
-
-      function sendMsg(e){
-        e.preventDefault();
-        const name = document.querySelector('.name'),
-              email = document.querySelector('.email'),
-              subj = document.querySelector('.subject'),
-              msg = document.querySelector('.message');
-        Email.send({
-          SecureToken : "384b5085-aebc-457d-90b6-9ac8b4659c38",
-          To : 'rajasahani89789@gmail.com',
-          From : email.value,
-          Subject : subj.value,
-          Body : msg.value
-        }).then(
-          message => alert(message)
-        );
-      }
-        if(form){
-        form.addEventListener('submit', sendMsg);
-      }
-  </script>
 
 </body>
 </html>
